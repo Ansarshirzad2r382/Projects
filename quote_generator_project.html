@@ -103,7 +103,7 @@
         let button = document.querySelector('.Generator');
     
         button.addEventListener('click', () => {
-            let randomQuote = Math.floor(Math.random() * quotes.length); // Math.random() gibt eine Dezimalzahl aus
+            let randomQuote = Math.floor(Math.random() * quotes.length); 
     
             let quote = document.querySelector('.quote');
             // Setzen des Zitats als Inhalt des Elements
@@ -111,7 +111,7 @@
     
             // Autor auch zurückgeben von der randomQuote
             let writer = document.querySelector(".autor");
-            writer.innerHTML = `${quotes[randomQuote].author}`; // Template-Literals
+            writer.innerHTML = `${quotes[randomQuote].author}`; 
             writer.style.color = "Red";
             writer.style.fontSize = "20px"; 
         });
