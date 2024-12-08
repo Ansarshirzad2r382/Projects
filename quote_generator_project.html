@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Quote Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        html, body {
+            background: url('https://wallpaperaccess.com/full/253322.jpg') no-repeat center center fixed; 
+            background-size: cover; /* erste "center":  zentriert das Bild auf die X Achse
+                                       zweite "center": zentriert das Bild auf die Y Achse*/
+    
+            /*  bevor wir den flexbox nutzen, muessen wir den body/container seine hoehe geben, weil ansonsten koenne 
+                wir den flexbox nicht effizient verwenden. */
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;  
+            font-size: 20px;
+        }
+
+        span {
+            background-color: black;
+            font-size: 20px;
+            color: white;
+            padding: 10px;
+            border: 2px solid white;
+        }
+        
+        div {
+            width: 400px;
+            height: auto; /* Auto Höhe, um den Inhalt besser zu berücksichtigen */
+            border: 2px solid white;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            
+            align-items: center;
+            justify-content: center;
+            
+            background-color: whitesmoke;
+            padding: 20px; /* Padding hinzufügen, um den Inhalt von den Rändern zu trennen */
+        }
+    
+        /* Eigenschaften für den Button */
+        button {
+            height: 40px;
+            width: 100px;
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            margin-top: 20px; /* Abstand zum vorherigen Element */
+        }
+        
+        /* es wird responsive fuer Ipad und geraete  */
+        @media (max-width: 600px) {
+            div {
+                width: 90%;
+                height: auto;
+            }
+            span {
+                font-size: 18px;
+            }
+            button {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <span>
+        Javascript Quote Generator 
+    </span>
+    
+    <div>
+        <p class="quote">"Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world."</p>
+        <h3 class="autor" style="color: red">Albert Einstein</h3>
+        
+        <button class="Generator">New Quote</button>    
+    </div>
+    
+    <script>
+        const quotes = [
+            { author: "Albert Einstein", quote: "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world." },
+            { author: "Maya Angelou", quote: "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel." },
+            { author: "Mahatma Gandhi", quote: "Be the change that you wish to see in the world." },
+            { author: "Oscar Wilde", quote: "Be yourself; everyone else is already taken." },
+            { author: "Ralph Waldo Emerson", quote: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment." },
+            { author: "Friedrich Nietzsche", quote: "He who has a why to live can bear almost any how." },
+            { author: "Dr. Seuss", quote: "Don't cry because it's over, smile because it happened." },
+            { author: "Mark Twain", quote: "The two most important days in your life are the day you are born and the day you find out why." },
+            { author: "Winston Churchill", quote: "Success is not final, failure is not fatal: It is the courage to continue that counts." },
+            { author: "Mother Teresa", quote: "Not all of us can do great things. But we can do small things with great love." },
+            { author: "Martin Luther King Jr.", quote: "Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that." }
+        ];
+        
+        let button = document.querySelector('.Generator');
+    
+        button.addEventListener('click', () => {
+            let randomQuote = Math.floor(Math.random() * quotes.length); // Math.random() gibt eine Dezimalzahl aus
+    
+            let quote = document.querySelector('.quote');
+            // Setzen des Zitats als Inhalt des Elements
+            quote.innerHTML = '"' + quotes[randomQuote].quote + '"'; 
+    
+            // Autor auch zurückgeben von der randomQuote
+            let writer = document.querySelector(".autor");
+            writer.innerHTML = `${quotes[randomQuote].author}`; // Template-Literals
+            writer.style.color = "Red";
+            writer.style.fontSize = "20px"; 
+        });
+    </script>
+    
+
+</body>
+</html>
